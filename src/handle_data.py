@@ -11,7 +11,7 @@ import os
 # for example : one row of teamsvecs matrix - id : [5] skill : [0 0 1 0 1 0 0] member : [0 1 0 0 1]
 # this represents the team 5 contains members 2 and 5 and skills 3 and 5
 # now the desired output is
-# src-train.txt : s3 s5
+# src_train.txt : s3 s5
 # tgt-tran.txt : m2 m5
 def preprocess(filepath):
     teamsvecs = read_file(filepath)

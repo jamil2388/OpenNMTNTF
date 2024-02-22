@@ -1,23 +1,23 @@
-# toy_en_de.yaml
+# ntf_config
 
 seed : 10
 
 ## Where the samples will be written
-save_data: data/output/samples
+save_data: data//run/example
 ## Where the vocabs(s) will be written
-src_vocab: data/output/vocabs/toy_en_de.run/example.vocabs.src
-tgt_vocab: data/output/vocabs/toy_en_de.run/example.vocabs.tgt
+src_vocab: data/toy_en_de/run/example.vocabs.src
+tgt_vocab: data/toy_en_de/run/example.vocabs.tgt
 # Prevent overwriting existing files in the folder
 overwrite: True
 
 # Corpus opts:
 data:
     corpus_1:
-        path_src: data/input/toy_en_de/src_train.txt
-        path_tgt: data/input/toy_en_de/tgt_train.txt
+        path_src: data/toy_en_de/src_train.txt
+        path_tgt: data/toy_en_de/tgt_train.txt
     valid:
-        path_src: data/input/toy_en_de/src_val.txt
-        path_tgt: data/input/toy_en_de/tgt_val.txt
+        path_src: data/toy_en_de/src_val.txt
+        path_tgt: data/toy_en_de/tgt_val.txt
 
 ## Vocabulary files that were just created
 #src_vocab: data/toy_en_de/run/example.vocabs.src
