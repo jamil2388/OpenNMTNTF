@@ -2,7 +2,7 @@
 For handling the pipeline for entire translation framework
 '''
 
-from handle_data import preprocess
+import handle_data
 
 
 if __name__ == '__main__':
@@ -20,4 +20,9 @@ if __name__ == '__main__':
         preprocesed_source_filepath = f'{preprocessed_path}/src.txt' # the train-test-val gets appended later
         preprocesed_target_filepath = f'{preprocessed_path}/tgt.txt'
 
-        # preprocess the data
+        # preprocess the data to build translation corpus in terms of skills and members
+        src, tgt = handle_data.preprocess(teamsvecs_filepath)
+
+        # write the arrays into files
+        handle_data.write_txt_file(src, preprocesed_source_filepath)
+        handle_data.write_txt_file(tgt, preprocesed_target_filepath)
