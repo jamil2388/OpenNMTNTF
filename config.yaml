@@ -3,32 +3,32 @@
 seed : 10
 
 ## Where the samples will be written
-save_data: data//run/example
+save_data: data/output/samples/
 ## Where the vocabs(s) will be written
-src_vocab: data/toy_en_de/run/example.vocabs.src
-tgt_vocab: data/toy_en_de/run/example.vocabs.tgt
+src_vocab: data/output/vocabs/dblp/toy.dblp.v12.json/vocabs.src
+tgt_vocab: data/output/vocabs/dblp/toy.dblp.v12.json/vocabs.tgt
 # Prevent overwriting existing files in the folder
 overwrite: True
 
 # Corpus opts:
 data:
     corpus_1:
-        path_src: data/toy_en_de/src_train.txt
-        path_tgt: data/toy_en_de/tgt_train.txt
+        path_src: data/input/dblp/toy.dblp.v12.json/src_train.txt
+        path_tgt: data/input/dblp/toy.dblp.v12.json/tgt_train.txt
     valid:
-        path_src: data/toy_en_de/src_val.txt
-        path_tgt: data/toy_en_de/tgt_val.txt
+        path_src: data/input/dblp/toy.dblp.v12.json/src_val.txt
+        path_tgt: data/input/dblp/toy.dblp.v12.json/tgt_val.txt
 
 ## Vocabulary files that were just created
-#src_vocab: data/toy_en_de/run/example.vocabs.src
-#tgt_vocab: data/toy_en_de/run/example.vocabs.tgt
-#
+#src_vocab: data/output/vocabs/dblp/toy.dblp.v12.json/vocabs.src
+#tgt_vocab: data/output/vocabs/dblp/toy.dblp.v12.json/vocabs.tgt
+
 ## Train on a single GPU
-## world_size: 1
-## gpu_ranks: [0]
+world_size: 1
+gpu_ranks: [0]
 #
 ## Where to save the checkpoints
-#save_model: toy_en_de/run/model
-#save_checkpoint_steps: 500
-#train_steps: 1000
-#valid_steps: 500
+save_model: data/output/models/dblp/toy.dblp.v12.json/
+save_checkpoint_steps: 10
+train_steps: 1000
+valid_steps: 500
