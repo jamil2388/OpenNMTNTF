@@ -20,7 +20,7 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 - If you want to run the translation on toy dataset, you can skip this section
 - The _toy.dblp.v12.json_ data and its preprocessed outputs are already given in the required folders
 - This project requires the data to be in sparse matrix format, specifically formulated by the OpeNTF project at "https://github.com/fani-lab/OpeNTF". 
-Conversion of raw domain data (example : DBLP) to sparse matrix enables in faster processing of the data into corpus. It drastically compresses the raw the data size.
+Conversion of raw domain data (example : DBLP) to sparse matrix enables in faster processing of the data into corpus. It drastically compresses the raw data size.
 This enables us to perform multiple runs on various NMT pipeline settings with maximum reduction of data preprocessing time 
 - For instance : The complex DBLP data is compressed into a sparse matrix holding three dictionaries 1) 'id' representing the team of publication,
 2) 'skill' representing the keywords (skills) used in the publications and 3) 'member' representing the authors of the publication
