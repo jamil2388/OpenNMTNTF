@@ -83,3 +83,14 @@ onmt_train -config config.yaml
 # predict the translations
 onmt_translate -model data/output/models/dblp/toy.dblp.v12.json/_step_100.pt -src data/input/dblp/toy.dblp.v12.json/src_test.txt -output data/output/translations/toy.dblp.v12.json.pred_100.txt -verbose
 ```
+
+###### Draft Commands 
+```
+onmt_translate -model data/output/models/dblp/dblp.v12.json.filtered.mt100.ts5/_step_5.pt -src data/input/dblp/dblp.v12.json.filtered.mt100.ts5/src_test.txt -output data/output/translations/dblp.v12.json.filtered.mt100.ts5.pred_5.txt -verbose
+onmt_translate -model data/output/models/dblp/dblp.v12.json.filtered.mt100.ts5/_step_5.pt -src data/input/dblp/dblp.v12.json.filtered.mt100.ts5/src_test.txt -output data/output/translations/dblp.v12.json.filtered.mt100.ts5.pred_5.txt -verbose
+
+# for pre trained embeddings
+onmt_train -config config.yaml -src_embeddings data/preprocessed/dblp/dblp.v12.json.filtered.mt100.ts5/src.sg0.d5.w3.txt -tgt_embeddings data/preprocessed/dblp/dblp.v1
+2.json.filtered.mt100.ts5/tgt.sg0.d5.w3.txt -embeddings_type word2vec
+
+```

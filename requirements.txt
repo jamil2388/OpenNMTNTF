@@ -16,6 +16,7 @@ fasttext-wheel==0.9.2
 filelock==3.13.1
 Flask==3.0.2
 fsspec==2024.2.0
+gensim==4.3.2
 grpcio==1.62.0
 idna==3.6
 itsdangerous==2.1.2

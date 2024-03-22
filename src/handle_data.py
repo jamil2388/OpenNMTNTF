@@ -6,6 +6,7 @@ as source and target files for translation. We aim to translate from the list of
 '''
 import pickle
 import os
+from gensim.models import keyedvectors
 
 # preprocess the teamsvecs file to produce desired translation files
 # for example : one row of teamsvecs matrix - id : [5] skill : [0 0 1 0 1 0 0] member : [0 1 0 0 1]
@@ -39,6 +40,7 @@ def create_sentences(mode, chr, arr, teamsvecs):
     arr[prev_row] = ' '.join(tmp_arr)
     return arr
 
+# pickle file
 def read_file(filepath):
     try:
         with open(filepath, 'rb') as f:
@@ -48,6 +50,12 @@ def read_file(filepath):
     except FileNotFoundError:
         print(f'{filepath} not found')
 
+def write_file(data, filepath):
+    try:
+        with open(filepath, 'wb') as f:
+            pickle.dump(data, f)
+    except FileNotFoundError:
+        print(f'{filepath} not found')
 
 # overwrites existing file
 def write_txt_file(data, filepath):
@@ -58,3 +66,7 @@ def write_txt_file(data, filepath):
         for line in data:
             f.write(line + '\n')
     print(f'{filepath} saved successfully')
+
+def load_embeddings(filepath):
+    wv = keyedvectors.load_word2vec_format(filepath)
+    return wv
