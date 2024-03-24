@@ -1,13 +1,14 @@
 import argparse
 import random
+import re
 
-
+total_experts = 14210
 # Function to replace a member of the target list with another member
 def replace_member(target_list):
     # Choose a random member to replace
     index_to_replace = random.randint(0, len(target_list) - 1)
     # Generate a random member to replace with
-    new_member = f"m{random.randint(1, 15000)}"
+    new_member = f"m{random.randint(1, total_experts)}"
     # Replace the member
     target_list[index_to_replace] = new_member
 
@@ -19,6 +20,31 @@ def remove_member(target_list):
     # Remove the member
     del target_list[index_to_remove]
 
+# extract the number of distinct members or skills from the file
+# Function to extract unique digits from a line
+def extract_unique_digits(line):
+    # Find all digits in the line using regular expression
+    digits = re.findall(r'\d+', line)
+    # Convert the digits to integers and return unique digits using a set
+    return set(map(int, digits))
+
+
+# Function to count total unique digits in the file
+def count_total_unique_digits(filename):
+    # Initialize an empty set to store unique digits
+    unique_digits = set()
+
+    # Open the file and process each line
+    with open(filename, 'r') as file:
+        for line in file:
+            # Extract unique digits from the line and update the set
+            unique_digits.update(extract_unique_digits(line))
+
+    # Return the total count of unique digits
+    return len(unique_digits)
+
+# experiment line
+print(count_total_unique_digits('../data/input/dblp/dblp.v12.json.filtered.mt75.ts3/src.txt'))
 
 # Argument parsing
 parser = argparse.ArgumentParser(description="Apply manipulations to target data.")

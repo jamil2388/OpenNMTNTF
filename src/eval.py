@@ -28,7 +28,7 @@ if __name__ == "__main__":
     parser.add_argument("-pred_file", type=str, help="Predicted file")
     args = parser.parse_args()
 
-    total_experts = count_total_experts(args.vocab)
+    total_experts = count_total_experts(args.vocab_tgt)
 
     with open(args.tgt_file, 'r') as file:
         tgt_lines = file.readlines()

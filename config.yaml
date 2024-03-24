@@ -6,12 +6,13 @@
 seed : 10
 
 ## Where the samples will be written
-save_data: data/output/samples/
+share_vocab : True
+save_data: data/output/vocabs/
 ## Where the vocabs(s) will be written
 #src_vocab: data/output/vocabs/dblp/toy.dblp.v12.json/vocabs.src
 #tgt_vocab: data/output/vocabs/dblp/toy.dblp.v12.json/vocabs.tgt
-src_vocab: data/output/vocabs/dblp/dblp.v12.json.filtered.mt100.ts5/vocabs.src
-tgt_vocab: data/output/vocabs/dblp/dblp.v12.json.filtered.mt100.ts5/vocabs.tgt
+src_vocab: data/output/vocabs/dblp/dblp.v12.json.filtered.mt75.ts3/vocabs.src
+tgt_vocab: data/output/vocabs/dblp/dblp.v12.json.filtered.mt75.ts3/vocabs.tgt
 # Prevent overwriting existing files in the folder
 overwrite: True
 
@@ -24,19 +25,19 @@ data:
 #        path_src: data/input/dblp/toy.dblp.v12.json/src_val.txt
 #        path_tgt: data/input/dblp/toy.dblp.v12.json/tgt_val.txt
     corpus_1:
-        path_src: data/input/dblp/dblp.v12.json.filtered.mt100.ts5/src_train.txt
-        path_tgt: data/input/dblp/dblp.v12.json.filtered.mt100.ts5/tgt_train.txt
+        path_src: data/input/dblp/dblp.v12.json.filtered.mt75.ts3/src_train.txt
+        path_tgt: data/input/dblp/dblp.v12.json.filtered.mt75.ts3/tgt_train.txt
     valid:
-        path_src: data/input/dblp/dblp.v12.json.filtered.mt100.ts5/src_val.txt
-        path_tgt: data/input/dblp/dblp.v12.json.filtered.mt100.ts5/tgt_val.txt
+        path_src: data/input/dblp/dblp.v12.json.filtered.mt75.ts3/src_val.txt
+        path_tgt: data/input/dblp/dblp.v12.json.filtered.mt75.ts3/tgt_val.txt
 
 #source_embedding:
-#    path: data/preprocessed/dblp/dblp.v12.json.filtered.mt100.ts5/src.sg0.d5.w3.txt
+#    path: data/preprocessed/dblp/dblp.v12.json.filtered.mt75.ts3/src.sg0.d5.w3.txt
 #    with_header: True
 #    case_insensitive: True
 #    trainable: False
 #target_embedding:
-#    path: data/preprocessed/dblp/dblp.v12.json.filtered.mt100.ts5/tgt.sg0.d5.w3.txt
+#    path: data/preprocessed/dblp/dblp.v12.json.filtered.mt75.ts3/tgt.sg0.d5.w3.txt
 #    with_header: True
 #    case_insensitive: True
 #    trainable: False
@@ -51,31 +52,31 @@ gpu_ranks: [0]
 #
 ## Where to save the checkpoints
 #save_model: data/output/models/dblp/toy.dblp.v12.json/
-save_model: data/output/models/dblp/dblp.v12.json.filtered.mt100.ts5/
-save_checkpoint_steps: 10000
+save_model: data/output/models/dblp/dblp.v12.json.filtered.mt75.ts3/
+save_checkpoint_steps: 100000
 train_steps: 1000
-valid_steps: 250
+valid_steps: 100
 
 ## reference : https://opennmt.net/OpenNMT-py/FAQ.html#train
-## training params
-#src_subword_type : bpe
-#tgt_subword_type : bpe
-#encoder_type: rnn
-#decoder_type: rnn
-#position_encoding: true
-##enc_layers: 6
-##dec_layers: 6
-#heads: 8
-#hidden_size: 512
-#word_vec_size: 512
-#transformer_ff: 2048
-#dropout_steps: [0]
-#dropout: [0.1]
-#attention_dropout: [0.1]
-#
-## Optim
-#optim : adam
-#learning_rate : 0.001
-#param_init: 0
-#param_init_glorot: true
-#normalization: "tokens"
+# training params
+src_subword_type : bpe
+tgt_subword_type : bpe
+encoder_type: rnn
+decoder_type: rnn
+position_encoding: true
+#enc_layers: 6
+#dec_layers: 6
+heads: 8
+hidden_size: 512
+word_vec_size: 50
+transformer_ff: 2048
+dropout_steps: [0]
+dropout: [0.1]
+attention_dropout: [0.1]
+
+# Optim
+optim : adam
+learning_rate : 0.001
+param_init: 0
+param_init_glorot: true
+normalization: "tokens"
