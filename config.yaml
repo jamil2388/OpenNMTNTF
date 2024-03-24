@@ -55,7 +55,7 @@ gpu_ranks: [0]
 save_model: data/output/models/dblp/dblp.v12.json.filtered.mt75.ts3/
 save_checkpoint_steps: 100000
 train_steps: 1000
-valid_steps: 100
+valid_steps: 200
 
 ## reference : https://opennmt.net/OpenNMT-py/FAQ.html#train
 # training params
