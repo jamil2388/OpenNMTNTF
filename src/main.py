@@ -26,7 +26,8 @@ def run_w2v(input_filepath, output_folder, mode):
 if __name__ == '__main__':
 
     # domains = ['dblp/toy.dblp.v12.json']
-    domains = ['dblp/dblp.v12.json.filtered.mt100.ts5']
+    # domains = ['dblp/dblp.v12.json.filtered.mt100.ts5']
+    domains = ['dblp/dblp.v12.json.filtered.mt75.ts3']
 
     for domain in domains:
 

@@ -90,7 +90,10 @@ onmt_translate -model data/output/models/dblp/dblp.v12.json.filtered.mt100.ts5/_
 onmt_translate -model data/output/models/dblp/dblp.v12.json.filtered.mt100.ts5/_step_5.pt -src data/input/dblp/dblp.v12.json.filtered.mt100.ts5/src_test.txt -output data/output/translations/dblp.v12.json.filtered.mt100.ts5.pred_5.txt -verbose
 
 # for pre trained embeddings
-onmt_train -config config.yaml -src_embeddings data/preprocessed/dblp/dblp.v12.json.filtered.mt100.ts5/src.sg0.d5.w3.txt -tgt_embeddings data/preprocessed/dblp/dblp.v1
-2.json.filtered.mt100.ts5/tgt.sg0.d5.w3.txt -embeddings_type word2vec
+./tools/embeddings_to_torch.py -emb_file_both "glove_dir/glove.6B.100d.txt" \
+-dict_file "data/data.vocab.pt" \
+-output_file "data/embeddings"
+
+onmt_train -config config.yaml -src_embeddings data/preprocessed/dblp/dblp.v12.json.filtered.mt100.ts5/src.sg0.d5.w3.txt -src_vocab data/output/vocabs/dblp/dblp.v12.json.filtered.mt100.ts5/vocabs.src -tgt_vocab data/output/vocabs/dblp/dblp.v12.json.filtered.mt100.ts5/vocabs.tgt -tgt_embeddings data/preprocessed/dblp/dblp.v12.json.filtered.mt100.ts5/tgt.sg0.d5.w3.txt -embeddings_type word2vec
 
 ```
