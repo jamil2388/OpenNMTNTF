@@ -80,8 +80,18 @@ onmt_build_vocab -config config.yaml -n_sample -1
 # train the data
 onmt_train -config config.yaml
 
+# train the data (with pretrained embeddings of word2vec)
+onmt_train -config config.yaml -src_embeddings data/preprocessed/dblp/dblp.v12.json.filtered.mt75.ts3/src.sg0.d50.w3.txt -src_vocab data/output/vocabs/dblp/dblp.v12.json.filtered.mt75.ts3/vocabs.src -tgt_vocab data/output/vocabs/dblp/dblp.v12.json.filtered.mt75.ts3/vocabs.tgt -tgt_embeddings data/preprocessed/dblp/dblp.v12.json.filtered.mt75.ts3/tgt.sg0.d50.w3.txt -embeddings_type word2vec
+
 # predict the translations
 onmt_translate -model data/output/models/dblp/toy.dblp.v12.json/_step_100.pt -src data/input/dblp/toy.dblp.v12.json/src_test.txt -output data/output/translations/toy.dblp.v12.json.pred_100.txt -verbose
+
+# evaluate the translations (You can skip all the training if already have previous prediction files)
+# some sample pred files can be found in src/exp folder
+python eval.py -vocab_tgt ../data/output/vocabs/dblp/dblp.v12.json.filtered.mt75.ts3/vocabs.tgt -tgt_file exp/tgt_test.txt -pred_file exp/pred5.5.2.1.txt
+
+# the evaluated csv files will be saved at src/exp folder
+
 ```
 
 ###### Draft Commands 
