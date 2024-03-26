@@ -9,7 +9,6 @@ def replace_member(target_list):
     index_to_replace = random.randint(0, len(target_list) - 1)
     # Generate a random member to replace with
     new_member = f"m{random.randint(1, total_experts)}"
-    # Replace the member
     target_list[index_to_replace] = new_member
 
 
@@ -17,8 +16,12 @@ def replace_member(target_list):
 def remove_member(target_list):
     # Choose a random member to remove
     index_to_remove = random.randint(0, len(target_list) - 1)
-    # Remove the member
     del target_list[index_to_remove]
+
+def add_member(target_list):
+    # Generate a random member to add
+    new_member = f"m{random.randint(1, total_experts)}"
+    target_list.append(new_member)
 
 # extract the number of distinct members or skills from the file
 # Function to extract unique digits from a line
@@ -63,12 +66,14 @@ for i in range(len(target_data)):
     target_list = target_data[i].strip().split()
 
     # Randomly choose between replacement, removal, or doing nothing
-    manipulation_type = random.choices(["replace", "remove", "none"], weights=args.w, k=1)[0]
+    manipulation_type = random.choices(["replace", "remove", "add", "none"], weights=args.w, k=1)[0]
 
     if manipulation_type == "replace":
         replace_member(target_list)
     elif manipulation_type == "remove":
         remove_member(target_list)
+    elif manipulation_type == "add":
+        add_member(target_list)
 
     # Update the line in target data if not "none"
     if manipulation_type != "none":
